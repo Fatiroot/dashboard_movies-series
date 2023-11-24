@@ -1,6 +1,27 @@
 <?php
-include "db_con.php";
+include "../db_con.php";
+
+
+if (isset($_POST["submit"])) {
+    $titre= $_POST['titre'];
+    $annee_de_sortie= $_POST['annee_sortie'];
+    $country= $_POST['country'];
+    $nombre_des_episodes=$_POST['nbr_episodes'];
+    $nombre_des_etoiles= $_POST['nbr_etoiles'];
+
+    $sql = "INSERT INTO `series`( `titre`, `annee_de_sortie`, `country`, `nombre_des _episodes`, `nombre_des _etoiles`, `categorie_id`) 
+    VALUES ('$titre','$annee_de_sortie','$country','$nombre_des_episodes','$nombre_des_etoiles',NULL)";
+
+    $result = mysqli_query($db, $sql);
+    if ($result) {
+        header("Location: ../series.php?msg=New record created successfully");
+     } else {
+        echo "Failed: " . mysqli_error($db);
+     }
+
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +33,7 @@ include "db_con.php";
         shows
         that have left a mark on you">
     <title>Favorite</title>
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="../dashboard.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -31,7 +52,7 @@ include "db_con.php";
     <nav>
         <div class="container d-flex justify-content-between gap-md-3 gap-lg-5 align-items-center position-relative">
             <div class="d-flex w-sm-100 align-items-center justify-content-between gap-3">
-                <div class="logo"><img class="img-fluid" src="./img-dash/logo.png" alt="logo"></div>
+                <div class="logo"><img class="img-fluid" src="../img-dash/logo.png" alt="logo"></div>
                 <div class="menu"><i class="fa-solid fa-bars burger-menu fs-3 text-white"></i></div>
             </div>
             <div class="search-wrapper flex-grow-1">
@@ -79,58 +100,73 @@ include "db_con.php";
                 </div>
             </div>
             <!-- content -->
-            <div class="content d-flex flex-column align-items-center gap-5 m-1 col-md-9 col-9 min-vh-100 p-2 p-md-5">
-               
-  <div class="container">
-  <?php
-    if (isset($_GET["msg"])) {
-      $msg = $_GET["msg"];
-      echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-      ' . $msg . '
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>';
-    }
-    ?> 
-    <a href="./series/add_series.php" class="btn btn-warning mb-3">Add New Serie</a>
-
-    <table class="table table-hover text-center">
-      <thead class="table-warning">
-        <tr>
-          <th scope="col">Titre</th>
-          <th scope="col">annee de sortie</th>
-          <th scope="col">Country</th>
-          <th scope="col">nombre des episodes</th>
-          <th scope="col">Categorie</th>
-          <th scope="col">nombre des etoiles</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-        $sql = "SELECT * FROM `series`";
-        $result = mysqli_query($db, $sql);
-        while ($row = mysqli_fetch_assoc($result)) {
-        ?>
-          <tr>
-            <td><?php echo $row["titre"] ?></td>
-            <td><?php echo $row["annee_de_sortie"] ?></td>
-            <td><?php echo $row["country"] ?></td>
-            <td><?php echo $row["nombre_des _episodes"] ?></td>
-            <td><?php echo $row["categorie_id"] ?></td>
-            <td><?php echo $row["nombre_des _etoiles"] ?></td>
             
-
-            <td>
-              <a href="./series/edit_series.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 " style="color: #efbd0b;"></i></a>
-              <a href="./series/delete_series.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="fa-solid fa-trash fs-5" style="color: #f00000;"></i></a>
-            </td>
-          </tr>
-        <?php
-        }
-        ?>
-      </tbody>
-    </table>
+            
+<div class="content d-flex flex-column align-items-center gap-5 m-1 col-md-9 col-9 min-vh-100 p-2 p-md-5">
+                <div class="col-lg-11">
+                    <h1 class="title fs-5 text-center">Add New Serie</h1>
                    
+                    
+   <div class="container">
+      <div class="text-center mb-4">
+         <p class=" text-white">Complete the form below to add a new serie</p>
+      </div>
+
+      
+      <div class="container d-flex justify-content-center">
+         <form action="" method="post" style="width:50vw; min-width:300px;">
+            <div class="row mb-3">
+               <div class="col">
+                  <label class="form-label text-white">Titre </label>
+                  <input type="text" class="form-control" name="titre" placeholder="titre">
+               </div>
+
+               <div class="col">
+                  <label class="form-label text-white">Annee de sortie</label>
+                  <input type="text" class="form-control" name="annee_sortie" placeholder="2023">
+               </div>
+            </div>
+
+            <div class=" row mb-3">
+                <div class="col">
+               <label class="form-label text-white">Country</label>
+               <input type="text" class="form-control" name="country" placeholder="country">
+            </div>
+            <div class="col">
+               <label class="form-label text-white">nombre des episodes</label>
+               <input type="text" class="form-control" name="nbr_episodes" placeholder="nombre des episodes">
+            </div>
+        </div>
+        <div class=" row mb-3">
+            <div class="col">
+               <label class="form-label text-white">nombre_des_etoiles</label>
+               <input type="text" class="form-control" name="nbr_etoiles" placeholder="nombre des etoiles">
+            </div>
+            <div class="col">
+            <label class="form-label text-white">categorie</label>
+            <select class="form-select mb-3" aria-label="Default select example" name="genre">
+                 <?php
+                 $sql = "SELECT * FROM `categorie`";
+                  $result = mysqli_query($db, $sql);
+                      if ($result) {
+                           while ($row = mysqli_fetch_array($result)) {
+                     ?>
+                    <option value="<?=$row['id']?>"><?=$row['nom']?></option>
+                      <?php
+                                             }
+                         }
+                        ?>
+            </select>
+            </div>
+        </div>
+            <div>
+               <button type="submit" class="btn btn-success" name="submit">Save</button>
+               <a href="../movies.php" class="btn btn-danger">Cancel</a>
+            </div>
+         </form>
+      </div>
+   </div>
+
                 </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

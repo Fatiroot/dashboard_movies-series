@@ -8,9 +8,10 @@ if (isset($_POST["submit"])) {
     $duree= $_POST['duree'];
     $country= $_POST['country'];
     $nombre_des_etoiles= $_POST['nbr_etoiles'];
+    $genre= $_POST['genre'];
 
     $sql = "INSERT INTO `movies`(`id`, `titre`, `annee_de_sortie`, `duree`, `country`, `nombre_des _etoiles`, `categorie_id`) VALUES (NULL,'$titre','$annee_de_sortie',
-    '$duree','$country','$nombre_des_etoiles',NULL)";
+    '$duree','$country','$nombre_des_etoiles','$genre')";
 
     $result = mysqli_query($db, $sql);
     if ($result) {
@@ -72,20 +73,20 @@ if (isset($_POST["submit"])) {
                         <span class="d-none d-md-inline">admin</span>
                     </div>
                     <ul class="nav d-flex flex-column">
-                        <li><a href="index.php" class="text-decoration-none text-white  px-4 py-2"><i
+                        <li><a href="./index.php" class="text-decoration-none text-white  px-4 py-2"><i
                                     class=" fa-solid fa-border-all"></i>
                                 <span class="d-none d-md-inline">Dashboard</span></a></li>
-                        <li><a href="movies.php" class="text-decoration-none text-warning px-4 py-2"><i
+                        <li><a href="./movies.php" class="text-decoration-none text-warning px-4 py-2"><i
                                     class=" fa-regular fa-heart"></i> <span
                                     class="d-none d-md-inline text-warning">Movies</span></a>
                         </li>
-                        <li><a href="series.php" class="text-decoration-none text-white px-4 py-2"><i
+                        <li><a href="./series.php" class="text-decoration-none text-white px-4 py-2"><i
                                     class=" fa-regular fa-bookmark"></i>
                                 <span class="d-none d-md-inline  text-white ">Series</span></a></li>
                         <li><a href="#" class="text-decoration-none text-white px-4 py-2"><i
                                     class=" fa-regular fa-user"></i> <span class="d-none d-md-inline">Account</span></a>
                         </li>
-                        <li><a href="index.html" class="text-decoration-none text-white px-4 py-2"><i
+                        <li><a href="./index.php" class="text-decoration-none text-white px-4 py-2"><i
                                     class=" fa-solid fa-arrow-right-from-bracket"></i> <span
                                     class="d-none d-md-inline">Log
                                     out</span></a></li>
@@ -131,6 +132,22 @@ if (isset($_POST["submit"])) {
             <div class="col">
                <label class="form-label text-white">nombre_des_etoiles:</label>
                <input type="text" class="form-control" name="nbr_etoiles" placeholder="nombre des etoiles">
+            </div>
+            <div class="col">
+            <label class="form-label text-white">categorie</label>
+            <select class="form-select mb-3" aria-label="Default select example" name="genre">
+                 <?php
+                 $sql = "SELECT * FROM `categorie`";
+                  $result = mysqli_query($db, $sql);
+                      if ($result) {
+                           while ($row = mysqli_fetch_array($result)) {
+                     ?>
+                    <option value="<?=$row['id']?>"><?=$row['nom']?></option>
+                      <?php
+                                             }
+                         }
+                        ?>
+            </select>
             </div>
         </div>
             <div>

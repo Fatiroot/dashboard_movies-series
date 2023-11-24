@@ -96,6 +96,7 @@ include "db_con.php";
           <th scope="col">annee de sortie</th>
           <th scope="col">duree</th>
           <th scope="col">Country</th>
+          <th scope="col">Categorie</th>
           <th scope="col">nombre des etoiles</th>
           <th scope="col">Action</th>
         </tr>
@@ -112,8 +113,8 @@ include "db_con.php";
             <td class='text-white'><?php echo $row["annee_de_sortie"] ?></td>
             <td class='text-white'><?php echo $row["duree"] ?></td>
             <td class='text-white'><?php echo $row["country"] ?></td>
+            <td class='text-white'><?php echo $row["categorie_id"] ?></td>
             <td class='text-white'><?php echo $row["nombre_des _etoiles"] ?></td>
-            
             <td>
               <a href="./movies/edit_movies.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 " style="color: #efbd0b;"></i></a>
               <a href="./movies/delete_movies.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="fa-solid fa-trash fs-5" style="color: #f00000;"></i></a>
