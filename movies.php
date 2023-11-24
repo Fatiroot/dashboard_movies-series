@@ -107,13 +107,18 @@ include "db_con.php";
         $result = mysqli_query($db, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
         ?>
+        <!-- <?php
+       $sql1 = "SELECT * FROM `categorie` WHERE `id` = " . $row['categorie_id'].'"';
+       $result1 = mysqli_query($db, $sql1);
+        $row1 = mysqli_fetch_assoc($result1);
+          ?> -->
           <tr>
 
             <td class='text-white'><?php echo $row["titre"] ?></td>
             <td class='text-white'><?php echo $row["annee_de_sortie"] ?></td>
             <td class='text-white'><?php echo $row["duree"] ?></td>
             <td class='text-white'><?php echo $row["country"] ?></td>
-            <td class='text-white'><?php echo $row["categorie_id"] ?></td>
+            <td class='text-white'><?php echo $row1["nom"] ?></td>
             <td class='text-white'><?php echo $row["nombre_des _etoiles"] ?></td>
             <td>
               <a href="./movies/edit_movies.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 " style="color: #efbd0b;"></i></a>
