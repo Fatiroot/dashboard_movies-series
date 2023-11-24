@@ -69,24 +69,24 @@ if (isset($_POST["submit"])) {
             <div class="sidebar col-auto col-md-3 min-vh-100 ">
                 <div class="side-content d-flex flex-column align-items-center  ">
                     <div class="profil d-flex flex-column align-items-center gap-3">
-                        <img src="img-dash/user.png" alt="">
+                        <img src="../img-dash/user.png" alt="">
                         <span class="d-none d-md-inline">admin</span>
                     </div>
                     <ul class="nav d-flex flex-column">
-                        <li><a href="./index.php" class="text-decoration-none text-white  px-4 py-2"><i
+                        <li><a href="../index.php" class="text-decoration-none text-white  px-4 py-2"><i
                                     class=" fa-solid fa-border-all"></i>
                                 <span class="d-none d-md-inline">Dashboard</span></a></li>
-                        <li><a href="./movies.php" class="text-decoration-none text-warning px-4 py-2"><i
+                        <li><a href="../movies.php" class="text-decoration-none text-warning px-4 py-2"><i
                                     class=" fa-regular fa-heart"></i> <span
                                     class="d-none d-md-inline text-warning">Movies</span></a>
                         </li>
-                        <li><a href="./series.php" class="text-decoration-none text-white px-4 py-2"><i
+                        <li><a href="../series.php" class="text-decoration-none text-white px-4 py-2"><i
                                     class=" fa-regular fa-bookmark"></i>
                                 <span class="d-none d-md-inline  text-white ">Series</span></a></li>
                         <li><a href="#" class="text-decoration-none text-white px-4 py-2"><i
                                     class=" fa-regular fa-user"></i> <span class="d-none d-md-inline">Account</span></a>
                         </li>
-                        <li><a href="./index.php" class="text-decoration-none text-white px-4 py-2"><i
+                        <li><a href="../index.php" class="text-decoration-none text-white px-4 py-2"><i
                                     class=" fa-solid fa-arrow-right-from-bracket"></i> <span
                                     class="d-none d-md-inline">Log
                                     out</span></a></li>

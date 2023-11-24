@@ -111,12 +111,20 @@ include "db_con.php";
         $result = mysqli_query($db, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
         ?>
+            <?php
+    $sql1 = "SELECT * FROM `categorie` WHERE `id` = " . $row['categorie_id'];
+    $result1 = mysqli_query($db, $sql1);
+
+    if ($result1 && mysqli_num_rows($result1) > 0) {
+        $row1 = mysqli_fetch_assoc($result1);
+    }
+?>
           <tr>
             <td><?php echo $row["titre"] ?></td>
             <td><?php echo $row["annee_de_sortie"] ?></td>
             <td><?php echo $row["country"] ?></td>
             <td><?php echo $row["nombre_des _episodes"] ?></td>
-            <td><?php echo $row["categorie_id"] ?></td>
+            <td><?php echo $row1["nom"] ?></td>
             <td><?php echo $row["nombre_des _etoiles"] ?></td>
             
 

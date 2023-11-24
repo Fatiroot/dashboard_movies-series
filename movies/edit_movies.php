@@ -70,7 +70,7 @@ if (isset($_POST["submit"])) {
             <div class="sidebar col-auto col-md-3 min-vh-100 ">
                 <div class="side-content d-flex flex-column align-items-center  ">
                     <div class="profil d-flex flex-column align-items-center gap-3">
-                        <img src="img-dash/user.png" alt="">
+                        <img src="../img-dash/user.png" alt="">
                         <span class="d-none d-md-inline">admin</span>
                     </div>
                     <ul class="nav d-flex flex-column">
@@ -167,7 +167,6 @@ if (isset($_POST["submit"])) {
   </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="js/favorite.js"></script>
 
 </body>
 
