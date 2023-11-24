@@ -112,28 +112,28 @@ if (isset($_POST["submit"])) {
       <form action="" method="post" style="width:50vw; min-width:300px;">
         <div class="row mb-3">
           <div class="col">
-            <label class="form-label">Titre</label>
+            <label class="form-label text-white" >Titre</label>
             <input type="text" class="form-control" name="titre" value="<?php echo $row['titre'] ?>">
           </div>
 
           <div class="col">
-            <label class="form-label">annee de sortie</label>
+            <label class="form-label text-white">annee de sortie</label>
             <input type="text" class="form-control" name="annee_sortie" value="<?php echo $row['annee_de_sortie'] ?>">
           </div>
         </div>
 
         <div class=" row mb-3">
             <div class="col">
-          <label class="form-label">duree</label>
+          <label class="form-label text-white">duree</label>
           <input type="text" class="form-control" name="duree" value="<?php echo $row['duree'] ?>">
           </div>
           <div class="col">
-          <label class="form-label">country</label>
+          <label class="form-label text-white">country</label>
           <input type="text" class="form-control" name="country" value="<?php echo $row['country'] ?>">
           </div>
         </div>
         <div class=" mb-3">
-          <label class="form-label">nombre des etoiles</label>
+          <label class="form-label text-white">nombre des etoiles</label>
           <input type="text" class="form-control" name="nbr_etoiles" value="<?php echo $row['nombre_des _etoiles'] ?>">
         </div>
 
