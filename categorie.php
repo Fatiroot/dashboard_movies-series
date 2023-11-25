@@ -11,19 +11,21 @@ if($result_add){
 }
 
 }
-
-// if(isset($_POST['edit'])){
-//     $nom=$_POST['genre'];
-//     $sql_edit="UPDATE `categorie` SET `nom`='$nom' WHERE `id`='$id'";    
-//     $result_edit=mysqli_query($db,$sql_edit);
-//     if($result_edit){
-//         header('location:categorie.php?msg=categorie add successfuly');
-//     }else {
-//        echo "Failed: ".mysqli_error($db);
-//     }
-//     } 
 ?>
+<?php
+$id=$_GET['id'];
+if(isset($_POST['edit'])){
+    $nom=$_POST['genre'];
+    $sql_edit="UPDATE `categorie` SET `nom`='$nom' WHERE `id`='$id'";    
+    $result_edit=mysqli_query($db,$sql_edit);
+    if($result_edit){
+        header('location: categorie.php?msg=categorie add successfuly');
+    }else {
+       echo "Failed: ".mysqli_error($db);
+    }
+    } 
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -102,9 +104,18 @@ if($result_add){
             <div class="content d-flex flex-column align-items-center gap-5 m-1 col-md-9 col-9 min-vh-100 p-2 p-md-5">
               
       <div class="container">
+      <?php
+    if (isset($_GET["msg"])) {
+      $msg = $_GET["msg"];
+      echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+      ' . $msg . '
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>';
+    }
+    ?> 
 
        <!-- Button trigger add categorie modal -->
-    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn btn-warning mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Add New Categorie
     </button>
 
@@ -131,17 +142,40 @@ if($result_add){
     </div>
   </div>
 </div>
+<?php
+$sql1 = "SELECT * FROM `categorie` WHERE `id` = $id";
+$result1 = mysqli_query($db, $sql1);
+
+if ($result1) {
+    $row1 = mysqli_fetch_assoc($result1);
+}
+    
+?>
+
+<!-- Modal   edit movie -->
+<div class="modal fade" id="editModal<?php echo $id?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Categorie</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="">
+          <label class="form-label text-white mb-3">Nom</label>
+          <input type="text" class="form-control" name="genre" placeholder="Edit categorie" value="<?php echo $row1['nom'] ?>">
+      </div>
+      <div class="modal-footer bg-warning">
+        <input type="button" class="btn btn-danger" data-bs-dismiss="modal" value='Cancel'>
+        <input type="submit" name="edit" class="btn btn-success" value='Save'>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
        
-      <?php
-    if (isset($_GET["msg"])) {
-      $msg = $_GET["msg"];
-      echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-      ' . $msg . '
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>';
-    }
-    ?> 
+   
 
     <table class="table table-hover text-center">
       <thead class="table-warning">
@@ -160,7 +194,7 @@ if($result_add){
             <td class='text-white'><?php echo $row["nom"] ?></td>
             <td>
             
-              <a href="#editModal=<?php echo $row["id"] ?>" class="link-dark " data-bs-toggle="modal" data-bs-target="#editModal" ><i class="fa-solid fa-pen-to-square fs-5 " style="color: #efbd0b;"></i></a>
+              <a href="#editModal<?php echo $row["id"] ?>" class="link-dark " data-bs-toggle="modal" data-bs-target="#editModal" ><i class="fa-solid fa-pen-to-square fs-5 " style="color: #efbd0b;"></i></a>
               <a href="./categorie/delete_categorie.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="fa-solid fa-trash fs-5" style="color: #f00000;"></i></a>
             </td>
           </tr>
