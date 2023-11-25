@@ -68,8 +68,8 @@ include "db_con.php";
                         <li><a href="series.php" class="text-decoration-none text-warning px-4 py-2"><i
                                     class=" fa-regular fa-bookmark"></i>
                                 <span class="d-none d-md-inline  text-warning ">Series</span></a></li>
-                        <li><a href="#" class="text-decoration-none text-white px-4 py-2"><i
-                                    class=" fa-regular fa-user"></i> <span class="d-none d-md-inline">Account</span></a>
+                                <li><a href="categorie.php" class="text-decoration-none text-white px-4 py-2"><i
+                                    class=" fa-regular fa-user"></i> <span class="d-none d-md-inline text-white">Categorie</span></a>
                         </li>
                         <li><a href="index.html" class="text-decoration-none text-white px-4 py-2"><i
                                     class=" fa-solid fa-arrow-right-from-bracket"></i> <span

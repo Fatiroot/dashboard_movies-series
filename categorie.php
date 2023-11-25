@@ -1,7 +1,28 @@
 <?php
 include "db_con.php";
-?>
+if(isset($_POST['submit'])){
+$nom=$_POST['genre'];
+$sql_add="INSERT INTO `categorie`(`id`,`nom`) VALUES (NULL,'$nom')";
+$result_add=mysqli_query($db,$sql_add);
+if($result_add){
+    header('location: categorie.php?msg=categorie add successfuly');
+}else {
+   echo "Failed: ".mysqli_error($db);
+}
 
+}
+
+// if(isset($_POST['edit'])){
+//     $nom=$_POST['genre'];
+//     $sql_edit="UPDATE `categorie` SET `nom`='$nom' WHERE `id`='$id'";    
+//     $result_edit=mysqli_query($db,$sql_edit);
+//     if($result_edit){
+//         header('location:categorie.php?msg=categorie add successfuly');
+//     }else {
+//        echo "Failed: ".mysqli_error($db);
+//     }
+//     } 
+?>
 
 
 <!DOCTYPE html>
@@ -15,7 +36,10 @@ include "db_con.php";
         that have left a mark on you">
     <title>Favorite</title>
     <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -57,15 +81,15 @@ include "db_con.php";
                         <li><a href="index.php" class="text-decoration-none text-white px-4 py-2"><i
                                     class=" fa-solid fa-border-all"></i>
                                 <span class="d-none d-md-inline">Dashboard</span></a></li>
-                        <li><a href="movies.php" class="text-decoration-none text-warning px-4 py-2"><i
+                        <li><a href="movies.php" class="text-decoration-none text-white px-4 py-2"><i
                                     class=" fa-regular fa-heart"></i> <span
-                                    class="d-none d-md-inline text-warning">Movies</span></a>
+                                    class="d-none d-md-inline text-white">Movies</span></a>
                         </li>
                         <li><a href="series.php" class="text-decoration-none text-white px-4 py-2"><i
                                     class=" fa-regular fa-bookmark"></i>
                                 <span class="d-none d-md-inline ">Series</span></a></li>
-                                <li><a href="categorie.php" class="text-decoration-none text-white px-4 py-2"><i
-                                    class=" fa-regular fa-user"></i> <span class="d-none d-md-inline text-white">Categorie</span></a>
+                        <li><a href="categorie.php" class="text-decoration-none text-warning px-4 py-2"><i
+                                    class=" fa-regular fa-user"></i> <span class="d-none d-md-inline text-warning">Categorie</span></a>
                         </li>
                         <li><a href="index.html" class="text-decoration-none text-white px-4 py-2"><i
                                     class=" fa-solid fa-arrow-right-from-bracket"></i> <span
@@ -78,6 +102,37 @@ include "db_con.php";
             <div class="content d-flex flex-column align-items-center gap-5 m-1 col-md-9 col-9 min-vh-100 p-2 p-md-5">
               
       <div class="container">
+
+       <!-- Button trigger add categorie modal -->
+    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add New Categorie
+    </button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header  bg-warning">
+        <h5 class="modal-title" id="exampleModalLabel">add categorie</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form method="post" action="">
+                  <label class="form-label text-white  mb-3">Nom</label>
+                  <input type="text" class="form-control" name="genre" placeholder="add categorie">
+      
+
+      </div>
+      <div class="modal-footer  bg-warning">
+        <input type="button" class="btn btn-danger" data-bs-dismiss="modal"  value='Cancel'>
+        <input type="submit" name="submit" class="btn btn-success" value='Save'>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+       
       <?php
     if (isset($_GET["msg"])) {
       $msg = $_GET["msg"];
@@ -87,45 +142,26 @@ include "db_con.php";
     </div>';
     }
     ?> 
-    <a href="./movies/add_movies.php" class="btn btn-warning mb-3">Add New Movie</a>
 
     <table class="table table-hover text-center">
       <thead class="table-warning">
         <tr>
-          <th scope="col">Titre</th>
-          <th scope="col">annee de sortie</th>
-          <th scope="col">duree</th>
-          <th scope="col">Country</th>
-          <th scope="col">Categorie</th>
-          <th scope="col">nombre des etoiles</th>
-          <th scope="col">Action</th>
+        <th scope="col">Action</th>
+          <th scope="col">Nom</th>
         </tr>
       </thead>
       <tbody>
         <?php
-        $sql = "SELECT * FROM `movies`";
+        $sql = "SELECT * FROM `categorie`";
         $result = mysqli_query($db, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
         ?>
-       <?php
-    $sql1 = "SELECT * FROM `categorie` WHERE `id` = " . $row['categorie_id'];
-    $result1 = mysqli_query($db, $sql1);
-
-    if ($result1 && mysqli_num_rows($result1) > 0) {
-        $row1 = mysqli_fetch_assoc($result1);
-    }
-?>
-
           <tr>
-            <td class='text-white'><?php echo $row["titre"] ?></td>
-            <td class='text-white'><?php echo $row["annee_de_sortie"] ?></td>
-            <td class='text-white'><?php echo $row["duree"] ?></td>
-            <td class='text-white'><?php echo $row["country"] ?></td>
-            <td class='text-white'><?php echo $row1["nom"] ?></td>
-            <td class='text-white'><?php echo $row["nombre_des _etoiles"] ?></td>
+            <td class='text-white'><?php echo $row["nom"] ?></td>
             <td>
-              <a href="./movies/edit_movies.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 " style="color: #efbd0b;"></i></a>
-              <a href="./movies/delete_movies.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="fa-solid fa-trash fs-5" style="color: #f00000;"></i></a>
+            
+              <a href="#editModal=<?php echo $row["id"] ?>" class="link-dark " data-bs-toggle="modal" data-bs-target="#editModal" ><i class="fa-solid fa-pen-to-square fs-5 " style="color: #efbd0b;"></i></a>
+              <a href="./categorie/delete_categorie.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="fa-solid fa-trash fs-5" style="color: #f00000;"></i></a>
             </td>
           </tr>
         <?php
@@ -138,8 +174,6 @@ include "db_con.php";
 
     </div>
     </section>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="js/favorite.js"></script>
 
 </body>
 

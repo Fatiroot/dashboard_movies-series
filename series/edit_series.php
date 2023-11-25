@@ -103,46 +103,48 @@ if (isset($_POST["submit"])) {
             </div>
             <!-- content -->
             
-            
-<div class="content d-flex flex-column align-items-center gap-5 m-1 col-md-9 col-9 min-vh-100 p-2 p-md-5">
-                <div class="col-lg-11">
-                    <h1 class="title fs-5 text-center">Add New Serie</h1>
-                   
-                    
-   <div class="container">
-      <div class="text-center mb-4">
-         <p class=" text-white">Complete the form below to add a new serie</p>
-      </div>
-
-      
+ <!-- content -->
+ <div class="content d-flex flex-column align-items-center gap-5 m-1 col-md-9 col-9 min-vh-100 p-2 p-md-5">
+               
+               <div class="container">
+                 <div class="text-center mb-4">
+                   <h3 class='text-warning'>Edit Movie Information</h3>
+                   <p class="text-muted">Click update after changing any information</p>
+                 </div>
+             
+                 <?php
+                 $sql = "SELECT * FROM `series` WHERE id = $id";
+                 $result = mysqli_query($db, $sql);
+                 $row = mysqli_fetch_assoc($result);
+                 ?>
       <div class="container d-flex justify-content-center">
          <form action="" method="post" style="width:50vw; min-width:300px;">
             <div class="row mb-3">
                <div class="col">
                   <label class="form-label text-white">Titre </label>
-                  <input type="text" class="form-control" name="titre" placeholder="titre">
+                  <input type="text" class="form-control" name="titre" placeholder="titre" value="<?php echo $row['titre'] ?>">
                </div>
 
                <div class="col">
                   <label class="form-label text-white">Annee de sortie</label>
-                  <input type="text" class="form-control" name="annee_sortie" placeholder="2023">
+                  <input type="text" class="form-control" name="annee_sortie" placeholder="2023" value="<?php echo $row['annee_de_sortie'] ?>">
                </div>
             </div>
 
             <div class=" row mb-3">
                 <div class="col">
                <label class="form-label text-white">Country</label>
-               <input type="text" class="form-control" name="country" placeholder="country">
+               <input type="text" class="form-control" name="country" placeholder="country" value="<?php echo $row['country'] ?>">
             </div>
             <div class="col">
                <label class="form-label text-white">nombre des episodes</label>
-               <input type="text" class="form-control" name="nbr_episodes" placeholder="nombre des episodes">
+               <input type="text" class="form-control" name="nbr_episodes" placeholder="nombre des episodes" value="<?php echo $row['nombre_des _episodes'] ?>">
             </div>
         </div>
         <div class=" row mb-3">
             <div class="col">
                <label class="form-label text-white">nombre_des_etoiles</label>
-               <input type="text" class="form-control" name="nbr_etoiles" placeholder="nombre des etoiles">
+               <input type="text" class="form-control" name="nbr_etoiles" placeholder="nombre des etoiles" value="<?php echo $row['nombre_des _etoiles'] ?>">
             </div>
             <div class="col">
             <label class="form-label text-white">categorie</label>
@@ -170,6 +172,78 @@ if (isset($_POST["submit"])) {
    </div>
 
                 </div>
+    </section>
+      <!-- content -->
+            <div class="content d-flex flex-column align-items-center gap-5 m-1 col-md-9 col-9 min-vh-100 p-2 p-md-5">
+               
+  <div class="container">
+    <div class="text-center mb-4">
+      <h3 class='text-warning'>Edit Movie Information</h3>
+      <p class="text-muted">Click update after changing any information</p>
+    </div>
+
+    <?php
+    $sql = "SELECT * FROM `movies` WHERE id = $id";
+    $result = mysqli_query($db, $sql);
+    $row = mysqli_fetch_assoc($result);
+    ?>
+
+    <div class="container d-flex justify-content-center">
+      <form action="" method="post" style="width:50vw; min-width:300px;">
+        <div class="row mb-3">
+          <div class="col">
+            <label class="form-label text-white" >Titre</label>
+            <input type="text" class="form-control" name="titre" value="<?php echo $row['titre'] ?>">
+          </div>
+
+          <div class="col">
+            <label class="form-label text-white">annee de sortie</label>
+            <input type="text" class="form-control" name="annee_sortie" value="<?php echo $row['annee_de_sortie'] ?>">
+          </div>
+        </div>
+
+        <div class=" row mb-3">
+            <div class="col">
+          <label class="form-label text-white">duree</label>
+          <input type="text" class="form-control" name="duree" value="<?php echo $row['duree'] ?>">
+          </div>
+          <div class="col">
+          <label class="form-label text-white">country</label>
+          <input type="text" class="form-control" name="country" value="<?php echo $row['country'] ?>">
+          </div>
+        </div>
+        <div class=" mb-3">
+          <div class="col">
+          <label class="form-label text-white">nombre des etoiles</label>
+          <input type="text" class="form-control" name="nbr_etoiles" value="<?php echo $row['nombre_des _etoiles'] ?>">
+          </div>
+          <div class="col">
+          <label class="form-label text-white">categorie</label>
+            <select class="form-select mb-3" aria-label="Default select example" name="genre">
+                 <?php
+                 $sql = "SELECT * FROM `categorie`";
+                  $result = mysqli_query($db, $sql);
+                      if ($result) {
+                
+                           while ($row = mysqli_fetch_array($result)) {
+                     ?>
+                    <option value="<?=$row['id']?>"><?=$row['nom']?></option>
+                      <?php
+                                             }
+                           
+                         }
+                        ?>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <button type="submit" class="btn btn-success" name="submit">Update</button>
+          <a href="../movies.php" class="btn btn-danger">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="js/favorite.js"></script>
