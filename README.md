@@ -19,6 +19,6 @@ décrire les entités, les relations, et les contraintes.
 -JOUNTURE.
 # CRUD (creat, read, update, delete).
 # lien des diagrammes :
-(https://app.diagrams.net/#HFatiroot%2Fdashboard_movies-series%2Fmain%2FDiagramme%20sans%20nom.drawio)https://app.diagrams.net/#HFatiroot%2Fdashboard_movies-series%2Fmain%2FDiagramme%20sans%20nom.drawio
+https://app.diagrams.net/#HFatiroot%2Fdashboard_movies-series%2Fmain%2FDiagramme%20sans%20nom.drawio
 # ajouter ERD.
 # ajouter compte rendu .
