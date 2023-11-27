@@ -1,5 +1,5 @@
 # dashboar de movieMingle
-Le tableau de bord de MovieMingle offre une interface conviviale permettant de gérer et d'explorer une collection de films. Voici quelques fonctionnalités de MovieMingle :
+Le tableau de bord de MovieMingle offre une interface conviviale permettant de gérer et d'explorer une collection de films , series, et categories . Voici quelques fonctionnalités de MovieMingle :
 -ajouter (supprimer , editer) movies.                                                                                                                                                                                                                                           
 -ajouter (supprimer , editer) series.                                                                                                                                                                                                                                           
 -ajouter (supprimer , editer) categorie.                                                                                                                                                                                                                                        
