@@ -50,7 +50,7 @@
                   <span class="d-none d-md-inline">admin</span>
                </div>
                <ul class="nav d-flex flex-column">
-                  <li><a href="index.html" class="text-decoration-none text-white  px-4 py-2"><i
+                  <li><a href="index.php" class="text-decoration-none text-white  px-4 py-2"><i
                      class=" fa-solid fa-border-all"></i>
                      <span class="d-none d-md-inline">Dashboard</span></a>
                   </li>
