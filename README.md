@@ -5,7 +5,7 @@ Le tableau de bord de MovieMingle offre une interface conviviale permettant de g
 -ajouter (supprimer , editer) categorie.
 screenshots:
  # schéma de base de données
-Le schéma de base de données suivant est conçu pour répondre aux besoins de Bookify. Il doit gérer les informations sur les salles de réunion, les employés, les réservations, les équipements, et les horaires. Les tables incluent des clés primaires, des clés étrangères, et des informations essentielles pour garantir une gestion efficace des données.
+Le schéma de base de données suivant est conçu pour répondre aux besoins de moviesMingle. Il doit gérer les movies , et les categories. Les tables incluent des clés primaires, des clés étrangères, et des informations essentielles pour garantir une gestion efficace des données.
 
 # diagrammes UML
 Réaliser des diagrammes UML (diagramme de class , cas d'utilissation et de sequence).
