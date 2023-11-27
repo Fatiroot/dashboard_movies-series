@@ -17,7 +17,7 @@ décrire les entités, les relations, et les contraintes.
 -Définit des contraintes telles que les clés primaires et les clés étrangères.
 -Manipulation des données INSERT, UPDATE et DELETE.
 -JOUNTURE.
-# CRUD (creat, read, update, delete).
+# PHP MySQL CRUD (creat, read, update, delete).
 # lien des diagrammes :
 https://app.diagrams.net/#HFatiroot%2Fdashboard_movies-series%2Fmain%2FDiagramme%20sans%20nom.drawio
 # ajouter ERD.
