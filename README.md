@@ -1,9 +1,8 @@
 # dashboar de movieMingle
 Le tableau de bord de MovieMingle offre une interface conviviale permettant de gérer et d'explorer une collection de films. Voici quelques fonctionnalités de MovieMingle :
--ajouter (supprimer , editer) movies.
--ajouter (supprimer , editer) series.
--ajouter (supprimer , editer) categorie.
-screenshots:
+-ajouter (supprimer , editer) movies.                                                                                                                                                                                                                                           
+-ajouter (supprimer , editer) series.                                                                                                                                                                                                                                           
+-ajouter (supprimer , editer) categorie.                                                                                                                                                                                                                                        
  # schéma de base de données
 Le schéma de base de données suivant est conçu pour répondre aux besoins de moviesMingle. Il doit gérer les movies , et les categories. Les tables incluent des clés primaires, des clés étrangères, et des informations essentielles pour garantir une gestion efficace des données.
 
